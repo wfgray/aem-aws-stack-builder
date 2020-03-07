@@ -1,0 +1,69 @@
+---
+
+ec2_vpc:
+  stack_name: AEMDigital
+  tag_name: AEM OpenCloud VPC
+  cidr_block: 10.10.0.0/16
+  dhcp_option: dopt-394da650
+
+network:
+  stack_name: aem-network-stack
+
+  internet_gateway:
+    tag_name: AEM VPC Internet Gateway
+
+  publish_dispatcher_elb:
+    us-east-2a:
+      cidr_block: 10.10.10.0/24
+      tag_name: AEM Publish Dispatcher ELB Subnet A
+    us-east-2b:
+      cidr_block: 10.10.20.0/24
+      tag_name: AEM Publish Dispatcher ELB Subnet B
+
+  publish_dispatcher:
+    us-east-2a:
+      cidr_block: 10.10.30.0/24
+      tag_name: AEM Publish Dispatcher Subnet A
+    us-east-2b:
+      cidr_block: 10.10.40.0/24
+      tag_name: AEM Publish Dispatcher Subnet B
+
+  publish:
+    us-east-2a:
+      cidr_block: 10.10.50.0/24
+      tag_name: AEM Publish Subnet A
+    us-east-2b:
+      cidr_block: 10.10.60.0/24
+      tag_name: AEM Publish Subnet B
+
+  author:
+    us-east-2a:
+      cidr_block: 10.10.70.0/24
+      tag_name: AEM Author Subnet A
+    us-east-2b:
+      cidr_block: 10.10.80.0/24
+      tag_name: AEM Author Subnet B
+
+  author_dispatcher:
+    us-east-2a:
+      cidr_block: 10.10.90.0/24
+      tag_name: AEM Author Dispatcher Subnet A
+    us-east-2b:
+      cidr_block: 10.10.100.0/24
+      tag_name: AEM Author Dispatcher Subnet B
+
+  tool:
+    us-east-2a:
+      cidr_block: 10.10.110.0/24
+      tag_name: AEM Tool Subnet A
+    us-east-2b:
+      cidr_block: 10.10.120.0/24
+      tag_name: AEM Tool Subnet B
+
+  public_route_table:
+    tag_name: AEM VPC Public Route Table
+
+  private_route_table:
+    tag_name: AEM VPC Private Route Table
+
+  hosted_zone: aem.
