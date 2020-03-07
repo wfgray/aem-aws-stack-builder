@@ -1,7 +1,7 @@
 ---
 
 ec2_vpc:
-  stack_name: overwrite-me
+  stack_name: AEMDigital
   tag_name: AEM OpenCloud VPC
-  cidr_block: overwrite-me
-  dhcp_option: dopt-75958817
+  cidr_block: 10.10.0.0/16
+  dhcp_option: dopt-394da650

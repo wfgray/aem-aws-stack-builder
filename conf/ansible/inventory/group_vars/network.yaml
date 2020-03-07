@@ -1,5 +1,11 @@
 ---
 
+ec2_vpc:
+  stack_name: AEMDigital
+  tag_name: AEM OpenCloud VPC
+  cidr_block: 10.10.0.0/16
+  dhcp_option: dopt-394da650
+
 network:
   stack_name: aem-network-stack
 
@@ -7,70 +13,52 @@ network:
     tag_name: AEM VPC Internet Gateway
 
   publish_dispatcher_elb:
-    ap-southeast-2a:
-      cidr_block: overwrite-me
+    us-east-2a:
+      cidr_block: 10.10.10.0/24
       tag_name: AEM Publish Dispatcher ELB Subnet A
-    ap-southeast-2b:
-      cidr_block: overwrite-me
+    us-east-2b:
+      cidr_block: 10.10.20.0/24
       tag_name: AEM Publish Dispatcher ELB Subnet B
-    ap-southeast-2c:
-      cidr_block: overwrite-me
-      tag_name: AEM Publish Dispatcher ELB Subnet C
 
   publish_dispatcher:
-    ap-southeast-2a:
-      cidr_block: overwrite-me
+    us-east-2a:
+      cidr_block: 10.10.30.0/24
       tag_name: AEM Publish Dispatcher Subnet A
-    ap-southeast-2b:
-      cidr_block: overwrite-me
+    us-east-2b:
+      cidr_block: 10.10.40.0/24
       tag_name: AEM Publish Dispatcher Subnet B
-    ap-southeast-2c:
-      cidr_block: overwrite-me
-      tag_name: AEM Publish Dispatcher Subnet C
 
   publish:
-    ap-southeast-2a:
-      cidr_block: overwrite-me
+    us-east-2a:
+      cidr_block: 10.10.50.0/24
       tag_name: AEM Publish Subnet A
-    ap-southeast-2b:
-      cidr_block: overwrite-me
+    us-east-2b:
+      cidr_block: 10.10.60.0/24
       tag_name: AEM Publish Subnet B
-    ap-southeast-2c:
-      cidr_block: overwrite-me
-      tag_name: AEM Publish Subnet C
 
   author:
-    ap-southeast-2a:
-      cidr_block: overwrite-me
+    us-east-2a:
+      cidr_block: 10.10.70.0/24
       tag_name: AEM Author Subnet A
-    ap-southeast-2b:
-      cidr_block: overwrite-me
+    us-east-2b:
+      cidr_block: 10.10.80.0/24
       tag_name: AEM Author Subnet B
-    ap-southeast-2c:
-      cidr_block: overwrite-me
-      tag_name: AEM Author Subnet C
 
   author_dispatcher:
-    ap-southeast-2a:
-      cidr_block: overwrite-me
+    us-east-2a:
+      cidr_block: 10.10.90.0/24
       tag_name: AEM Author Dispatcher Subnet A
-    ap-southeast-2b:
-      cidr_block: overwrite-me
+    us-east-2b:
+      cidr_block: 10.10.100.0/24
       tag_name: AEM Author Dispatcher Subnet B
-    ap-southeast-2c:
-      cidr_block: overwrite-me
-      tag_name: AEM Author Dispatcher Subnet C
 
   tool:
-    ap-southeast-2a:
-      cidr_block: overwrite-me
+    us-east-2a:
+      cidr_block: 10.10.110.0/24
       tag_name: AEM Tool Subnet A
-    ap-southeast-2b:
-      cidr_block: overwrite-me
+    us-east-2b:
+      cidr_block: 10.10.120.0/24
       tag_name: AEM Tool Subnet B
-    ap-southeast-2c:
-      cidr_block: overwrite-me
-      tag_name: AEM Tool Subnet C
 
   public_route_table:
     tag_name: AEM VPC Public Route Table
@@ -78,33 +66,4 @@ network:
   private_route_table:
     tag_name: AEM VPC Private Route Table
 
-bastion:
-  stack_name: aem-bastion-stack
-  key_pair_name: overwrite-me
-  ami_id: ami-ccecf5af
-  subnet_id: overwrite-me
-  security_groups: overwrite-me
-
-# TODO: create a new elastic ip option?
-nat_gateway:
-  stack_name: aem-nat-gateway-stack
-  elastic_ip_allocation_id: eipalloc-32711957
-
-endpoints:
-  s3: overwrite-me
-
-network_exports:
-  stack_name: aem-network-exports-stack
-  VPCId: vpc-12345678
-  AuthorPublishDispatcherSubnet: subnet-12345678
-  PublishDispatcherELBSubnetList: subnet-12345678,subnet-87654321
-  PublishDispatcherSubnetList: subnet-12345678,subnet-87654321
-  PublishSubnetList: subnet-12345678,subnet-87654321
-  AuthorPrimarySubnet: subnet-12345678
-  AuthorStandbySubnet: subnet-87654321
-  AuthorELBSubnetList: subnet-12345678,subnet-87654321
-  AuthorDispatcherELBSubnetList: subnet-12345678,subnet-87654321
-  AuthorDispatcherSubnetList: subnet-12345678,subnet-87654321
-  ToolSubnetList: subnet-12345678,subnet-87654321
-  PublicRouteTable: rtb-77cd4413
-  PrivateRouteTable: rtb-75cd4411
+  hosted_zone: aem.
